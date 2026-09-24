@@ -6,9 +6,9 @@ router.get("/", productController.fetchAllProducts);
 
 router.delete("/:id", productController.deleteProduct);
 
-router.put("/:id", productController.deleteProduct);
+router.put("/:id", productController.updateProduct);
 
-router.post("/", productController.updateProduct);
+router.post("/", productController.createProduct);
 
 router.get("/:id", productController.fetchOneProduct);
 

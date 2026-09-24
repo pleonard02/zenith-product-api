@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const productSchema = mongoose.Schema({
     name: {type: String, required: [true, "Please enter the name of the product."]},
     description: {type: String, required: [true, "Please enter a description of the product."]},
-    price: {type: Number, required: [true, "Price is required."], min: [0, "Price cannot be negative."]},
-    category: {type: String, required},
+    price: {type: Number, required: [true, "Please enter a price for the product."], min: [0.01, "Price must be greater than 0."]},
+    category: {type: String, required: [true, "Please enter a category for the product"]},
     inStock: {type: Boolean, default: true},
     tags: {type: [String]},
     createdAt: {type: Date, default: Date.now}
