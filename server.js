@@ -13,10 +13,12 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 
 const productsRouter = require("./routes/productRoutes.js");
+
+app.use('/api/products', productsRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is listening on http://localhost:${PORT}`)

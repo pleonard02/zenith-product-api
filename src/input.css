@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+    --font-sans: "PT Serif Caption", "Times New Roman", sans-serif;
+    --text-[#031C2B]
+}
+
+body {
+    @apply font-sans;
+}
