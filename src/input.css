@@ -1,10 +1,73 @@
-@import "tailwindcss";
+@layer theme, base, components, utilities;
 
-@theme {
-    --font-sans: "PT Serif Caption", "Times New Roman", sans-serif;
-    --text-[#031C2B]
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+:root {
+    --font-sans: "Inter", "Segoe UI", sans-serif;
+
+    --color-zenith-ink: #102A33;
+    --color-zenith-muted: #53676D;
+    --color-zenith-subtle: #8A999E;
+
+    --color-zenith-border: #DDE7E8;
+    --color-zenith-surface: #FAFCFC;
+
+    --color-zenith-blue: #087D9D;
+    --color-zenith-teal: #08C7A1;
+    --color-zenith-green: #20E66B;
 }
 
 body {
-    @apply font-sans;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+select {
+    cursor: pointer;
+}
+
+.catalog-heading {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-zenith-subtle);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-zenith-muted);
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-zenith-border);
+    border-radius: 0.75rem;
+    background-color: var(--color-zenith-surface);
+    color: var(--color-zenith-ink);
+    font-size: 0.875rem;
+    outline: none;
+    transition:
+        border-color 200ms ease,
+        box-shadow 200ms ease,
+        background-color 200ms ease;
+}
+
+.form-input::placeholder {
+    color: #A1AEB1;
+}
+
+.form-input:focus {
+    background-color: #FFFFFF;
+    border-color: var(--color-zenith-blue);
+    box-shadow: 0 0 0 4px rgb(8 125 157 / 10%);
 }

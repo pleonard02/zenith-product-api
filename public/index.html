@@ -7,89 +7,1230 @@
     <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif+Caption:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>Zenith Product API</title>
 </head>
-<body>
-    <header class="bg-[linear-gradient(135deg,#EAF7F5,#08C7A1,#087D9D)] px-6 py-4">
-        <div class="max-w-7xl mx-auto">
-            <img src="./images/zenith_logo.png" alt="Zenith" class="w-[280px]">
-        </div>
+<body class="bg-[#F3F6F6] text-[#102A33]">
 
-    </header>
+    <div class="min-h-screen flex">
 
-    <main class="bg-[#f7fafa]">
-        <section class="flex justify-between items-center mb-8">
-            <div>
-                <h1 class="text-[#031C2B] text-2xl font-semibold">Product Inventory</h1>
-                <p class="text-[#65767b]">Manage the Zenith product catalog</p>
+        <aside
+            class="
+                hidden lg:flex
+                fixed inset-y-0 left-0
+                w-[260px]
+                flex-col
+                bg-white
+                border-r border-[#DDE7E8]
+                z-40
+            "
+        >
+            <!-- Brand -->
+            <div class="h-[104px] flex items-center px-7 border-b border-[#EDF2F2]">
+                <img
+                    src="./images/zenith_logo.png"
+                    alt="Zenith E-Commerce"
+                    class="w-[190px]"
+                >
             </div>
-            
-            <button 
-                id="add-product-btn" 
-                class="bg-[linear-gradient(135deg,#087D9D,#08C7A1,#20E66B)]
-                border border-[#06354A]
-                px-5 py-2.5
-                rounded-lg
-                text-white font-semibold
-                shadow-md
-                hover:scale-105
-                transition-transform"
-            >
-                Add Product
-            </button>
-            <section 
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4 py-8">
+
+                <p
+                    class="
+                        px-3 mb-3
+                        text-[11px]
+                        font-semibold
+                        tracking-[0.18em]
+                        uppercase
+                        text-[#94A3A7]
+                    "
+                >
+                    Workspace
+                </p>
+
+                <div class="space-y-1">
+
+                    <a
+                        href="#"
+                        class="
+                            flex items-center gap-3
+                            px-3 py-3
+                            rounded-xl
+                            text-sm
+                            text-[#64777D]
+                            hover:bg-[#F5F9F9]
+                            hover:text-[#102A33]
+                            transition-all duration-200
+                        "
+                    >
+                        <span class="text-lg">◫</span>
+                        Overview
+                    </a>
+
+                    <a
+                        href="#"
+                        class="
+                            relative
+                            flex items-center gap-3
+                            px-3 py-3
+                            rounded-xl
+                            bg-[#EAF7F5]
+                            text-[#087D9D]
+                            text-sm
+                            font-semibold
+                        "
+                    >
+                        <span
+                            class="
+                                absolute
+                                left-0
+                                top-2 bottom-2
+                                w-[3px]
+                                rounded-full
+                                bg-[#08C7A1]
+                            "
+                        ></span>
+
+                        <span class="text-lg">◆</span>
+                        Products
+                    </a>
+
+                    <a
+                        href="#"
+                        class="
+                            flex items-center gap-3
+                            px-3 py-3
+                            rounded-xl
+                            text-sm
+                            text-[#64777D]
+                            hover:bg-[#F5F9F9]
+                            hover:text-[#102A33]
+                            transition-all duration-200
+                        "
+                    >
+                        <span class="text-lg">◇</span>
+                        Categories
+                    </a>
+
+                    <a
+                        href="#"
+                        class="
+                            flex items-center gap-3
+                            px-3 py-3
+                            rounded-xl
+                            text-sm
+                            text-[#64777D]
+                            hover:bg-[#F5F9F9]
+                            hover:text-[#102A33]
+                            transition-all duration-200
+                        "
+                    >
+                        <span class="text-lg">○</span>
+                        Activity
+                    </a>
+
+                </div>
+            </nav>
+
+            <!-- User -->
+            <div class="p-5 border-t border-[#EDF2F2]">
+
+                <div class="flex items-center gap-3">
+
+                    <div
+                        class="
+                            w-10 h-10
+                            rounded-full
+                            flex items-center justify-center
+                            bg-[#031C2B]
+                            text-white
+                            text-xs
+                            font-semibold
+                        "
+                    >
+                        PL
+                    </div>
+
+                    <div>
+                        <p class="text-sm font-semibold text-[#102A33]">
+                            Administrator
+                        </p>
+
+                        <p class="text-xs text-[#94A3A7]">
+                            Zenith Commerce
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </aside>
+
+
+        <!-- =========================
+             APPLICATION
+        ========================== -->
+        <div class="flex-1 lg:ml-[260px]">
+
+            <!-- Top bar -->
+            <header
                 class="
-                    search-container
-                    w-full
-                    mt-8
-                    p-4
-                    flex
-                    gap-4
-                    items-center
-                    bg-[linear-gradient(135deg,#EAF7F5,#08C7A1,#087D9D)]
-                    border
-                    border-[#06354A]
-                    rounded-lg
+                    sticky top-0
+                    z-30
+                    h-[72px]
+                    flex items-center justify-between
+                    px-6 lg:px-10
+                    bg-white/90
+                    backdrop-blur-xl
+                    border-b border-[#DDE7E8]
                 "
             >
-                <input 
-                    type="search"
-                    placeholder="Search..."
+                <div class="flex items-center gap-2 text-sm">
+
+                    <span class="text-[#94A3A7]">Workspace</span>
+                    <span class="text-[#C4CED0]">/</span>
+                    <span class="font-semibold text-[#102A33]">Inventory</span>
+
+                </div>
+
+                <div class="flex items-center gap-3">
+
+                    <div
+                        class="
+                            hidden sm:flex
+                            items-center gap-2
+                            px-3 py-2
+                            rounded-full
+                            bg-[#EAF7F5]
+                            text-[#15785A]
+                            text-xs
+                            font-semibold
+                        "
+                    >
+                        <span class="w-2 h-2 rounded-full bg-[#08C7A1]"></span>
+                        System online
+                    </div>
+
+                    <button
+                        class="
+                            w-10 h-10
+                            rounded-full
+                            border border-[#DDE7E8]
+                            bg-white
+                            text-[#64777D]
+                            hover:border-[#087D9D]
+                            hover:text-[#087D9D]
+                            transition-all duration-200
+                        "
+                        aria-label="Notifications"
+                    >
+                        ◌
+                    </button>
+
+                </div>
+            </header>
+
+
+            <!-- =========================
+                 MAIN CONTENT
+            ========================== -->
+            <main class="px-5 sm:px-7 lg:px-10 py-10">
+
+                <div class="max-w-[1500px] mx-auto">
+
+                    <!-- Heading -->
+                    <section
+                        class="
+                            flex flex-col
+                            md:flex-row
+                            md:items-end
+                            md:justify-between
+                            gap-6
+                            mb-10
+                        "
+                    >
+                        <div>
+
+                            <p
+                                class="
+                                    mb-2
+                                    text-[11px]
+                                    tracking-[0.2em]
+                                    uppercase
+                                    font-semibold
+                                    text-[#087D9D]
+                                "
+                            >
+                                Catalog Operations
+                            </p>
+
+                            <h1
+                                class="
+                                    text-3xl sm:text-4xl
+                                    font-semibold
+                                    tracking-[-0.03em]
+                                    text-[#102A33]
+                                "
+                            >
+                                Product intelligence
+                            </h1>
+
+                            <p class="mt-3 text-sm sm:text-base text-[#708287]">
+                                Manage your catalog, pricing, availability, and product data.
+                            </p>
+
+                        </div>
+
+                        <button
+                            id="add-product-btn"
+                            class="
+                                group
+                                inline-flex
+                                items-center
+                                justify-center
+                                gap-3
+                                px-5 py-3
+                                rounded-xl
+                                bg-[#087D9D]
+                                text-white
+                                text-sm
+                                font-semibold
+                                shadow-[0_8px_24px_rgba(8,125,157,0.18)]
+                                hover:bg-[#076D89]
+                                hover:-translate-y-0.5
+                                hover:shadow-[0_12px_30px_rgba(8,125,157,0.25)]
+                                active:translate-y-0
+                                transition-all duration-200
+                            "
+                        >
+                            <span
+                                class="
+                                    text-lg
+                                    leading-none
+                                    transition-transform
+                                    duration-200
+                                    group-hover:rotate-90
+                                "
+                            >
+                                +
+                            </span>
+
+                            New product
+                        </button>
+
+                    </section>
+
+
+                    <!-- =========================
+                         EXECUTIVE SUMMARY
+                    ========================== -->
+                    <section
+                        class="
+                            relative
+                            overflow-hidden
+                            mb-8
+                            rounded-[24px]
+                            bg-[#031C2B]
+                            text-white
+                            shadow-[0_20px_60px_rgba(3,28,43,0.12)]
+                        "
+                    >
+                        <!-- Decorative glows -->
+                        <div
+                            class="
+                                pointer-events-none
+                                absolute
+                                -top-32 -right-24
+                                w-[360px] h-[360px]
+                                rounded-full
+                                bg-[#08C7A1]/10
+                                blur-3xl
+                            "
+                        ></div>
+
+                        <div
+                            class="
+                                pointer-events-none
+                                absolute
+                                -bottom-40 left-1/3
+                                w-[340px] h-[340px]
+                                rounded-full
+                                bg-[#087D9D]/15
+                                blur-3xl
+                            "
+                        ></div>
+
+                        <div class="relative p-7 lg:p-9">
+
+                            <div
+                                class="
+                                    flex flex-col
+                                    lg:flex-row
+                                    lg:items-start
+                                    lg:justify-between
+                                    gap-8
+                                "
+                            >
+                                <div>
+
+                                    <div class="flex items-center gap-3 mb-5">
+
+                                        <span
+                                            class="
+                                                text-[10px]
+                                                tracking-[0.18em]
+                                                uppercase
+                                                font-semibold
+                                                text-[#8EB7C0]
+                                            "
+                                        >
+                                            Catalog overview
+                                        </span>
+
+                                        <span
+                                            class="
+                                                px-2.5 py-1
+                                                rounded-full
+                                                border border-[#08C7A1]/20
+                                                bg-[#08C7A1]/10
+                                                text-[#7BE5CC]
+                                                text-[10px]
+                                                font-semibold
+                                                tracking-wide
+                                            "
+                                        >
+                                            LIVE
+                                        </span>
+
+                                    </div>
+
+                                    <p
+                                        id="catalog-value"
+                                        class="
+                                            text-4xl lg:text-5xl
+                                            font-semibold
+                                            tracking-[-0.04em]
+                                        "
+                                    >
+                                        $0.00
+                                    </p>
+
+                                    <p class="mt-2 text-sm text-[#8EB7C0]">
+                                        Total catalog value
+                                    </p>
+
+                                </div>
+
+                                <div
+                                    class="
+                                        grid
+                                        grid-cols-3
+                                        gap-8 lg:gap-14
+                                    "
+                                >
+                                    <div>
+                                        <p
+                                            id="total-products"
+                                            class="text-2xl font-semibold"
+                                        >
+                                            0
+                                        </p>
+                                        <p class="mt-1 text-xs text-[#8EB7C0]">
+                                            Products
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <p
+                                            id="in-stock-count"
+                                            class="text-2xl font-semibold text-[#79E5C8]"
+                                        >
+                                            0
+                                        </p>
+                                        <p class="mt-1 text-xs text-[#8EB7C0]">
+                                            In stock
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <p
+                                            id="out-stock-count"
+                                            class="text-2xl font-semibold"
+                                        >
+                                            0
+                                        </p>
+                                        <p class="mt-1 text-xs text-[#8EB7C0]">
+                                            Unavailable
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- availability -->
+                            <div class="mt-9 pt-6 border-t border-white/10">
+
+                                <div class="flex justify-between text-xs mb-3">
+                                    <span class="text-[#8EB7C0]">
+                                        Catalog availability
+                                    </span>
+
+                                    <span
+                                        id="availability-percent"
+                                        class="font-semibold text-[#79E5C8]"
+                                    >
+                                        0%
+                                    </span>
+                                </div>
+
+                                <div
+                                    class="
+                                        h-1.5
+                                        overflow-hidden
+                                        rounded-full
+                                        bg-white/10
+                                    "
+                                >
+                                    <div
+                                        id="availability-bar"
+                                        class="
+                                            h-full
+                                            w-0
+                                            rounded-full
+                                            bg-[linear-gradient(90deg,#087D9D,#08C7A1,#20E66B)]
+                                            transition-all
+                                            duration-700
+                                        "
+                                    ></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </section>
+
+
+                    <!-- =========================
+                         PRODUCT CATALOG
+                    ========================== -->
+                    <section
+                        class="
+                            overflow-hidden
+                            bg-white
+                            border border-[#DDE7E8]
+                            rounded-[20px]
+                            shadow-[0_8px_35px_rgba(16,42,51,0.05)]
+                        "
+                    >
+
+                        <!-- Catalog heading -->
+                        <div
+                            class="
+                                flex
+                                flex-col
+                                xl:flex-row
+                                xl:items-center
+                                xl:justify-between
+                                gap-5
+                                px-6 py-5
+                                border-b border-[#E7EEEE]
+                            "
+                        >
+                            <div>
+                                <h2 class="text-lg font-semibold text-[#102A33]">
+                                    Product catalog
+                                </h2>
+
+                                <p class="mt-1 text-xs text-[#819196]">
+                                    Search, filter, and manage Zenith products.
+                                </p>
+                            </div>
+
+
+                            <!-- Controls -->
+                            <div
+                                class="
+                                    flex
+                                    flex-col
+                                    sm:flex-row
+                                    gap-3
+                                    xl:w-auto
+                                "
+                            >
+                                <!-- Search -->
+                                <div class="relative sm:w-[280px]">
+
+                                    <span
+                                        class="
+                                            absolute
+                                            left-3.5
+                                            top-1/2
+                                            -translate-y-1/2
+                                            text-[#94A3A7]
+                                        "
+                                    >
+                                        ⌕
+                                    </span>
+
+                                    <input
+                                        id="search-input"
+                                        type="search"
+                                        placeholder="Search products"
+                                        class="
+                                            w-full
+                                            h-11
+                                            pl-10 pr-4
+                                            rounded-xl
+                                            border border-[#DDE7E8]
+                                            bg-[#FAFCFC]
+                                            text-sm
+                                            text-[#102A33]
+                                            placeholder:text-[#9BA9AD]
+                                            outline-none
+                                            focus:bg-white
+                                            focus:border-[#087D9D]
+                                            focus:ring-4
+                                            focus:ring-[#087D9D]/10
+                                            transition-all duration-200
+                                        "
+                                    >
+
+                                </div>
+
+
+                                <!-- Category -->
+                                <select
+                                    id="category-filter"
+                                    class="
+                                        h-11
+                                        min-w-[155px]
+                                        px-4
+                                        rounded-xl
+                                        border border-[#DDE7E8]
+                                        bg-[#FAFCFC]
+                                        text-sm
+                                        text-[#53676D]
+                                        outline-none
+                                        focus:border-[#087D9D]
+                                        focus:ring-4
+                                        focus:ring-[#087D9D]/10
+                                        transition-all
+                                    "
+                                >
+                                    <option value="">All categories</option>
+                                </select>
+
+
+                                <!-- Sort -->
+                                <select
+                                    id="sort-filter"
+                                    class="
+                                        h-11
+                                        min-w-[165px]
+                                        px-4
+                                        rounded-xl
+                                        border border-[#DDE7E8]
+                                        bg-[#FAFCFC]
+                                        text-sm
+                                        text-[#53676D]
+                                        outline-none
+                                        focus:border-[#087D9D]
+                                        focus:ring-4
+                                        focus:ring-[#087D9D]/10
+                                        transition-all
+                                    "
+                                >
+                                    <option value="">Sort products</option>
+                                    <option value="price_asc">
+                                        Price: Low to high
+                                    </option>
+                                    <option value="price_desc">
+                                        Price: High to low
+                                    </option>
+                                </select>
+
+
+                                <!-- Filter drawer/button -->
+                                <button
+                                    id="filter-btn"
+                                    class="
+                                        h-11
+                                        px-4
+                                        rounded-xl
+                                        border border-[#DDE7E8]
+                                        bg-white
+                                        text-sm
+                                        font-semibold
+                                        text-[#53676D]
+                                        hover:border-[#087D9D]
+                                        hover:text-[#087D9D]
+                                        transition-all duration-200
+                                    "
+                                >
+                                    Filters
+                                </button>
+
+                            </div>
+                        </div>
+
+
+                        <!-- Table -->
+                        <div class="overflow-x-auto">
+
+                            <table class="w-full">
+
+                                <thead>
+                                    <tr
+                                        class="
+                                            bg-[#FAFCFC]
+                                            border-b border-[#E7EEEE]
+                                        "
+                                    >
+                                        <th
+                                            class="
+                                                px-6 py-4
+                                                text-left
+                                                text-[10px]
+                                                font-semibold
+                                                tracking-[0.15em]
+                                                uppercase
+                                                text-[#8A999E]
+                                            "
+                                        >
+                                            Product
+                                        </th>
+
+                                        <th class="catalog-heading">
+                                            Category
+                                        </th>
+
+                                        <th class="catalog-heading">
+                                            Price
+                                        </th>
+
+                                        <th class="catalog-heading">
+                                            Availability
+                                        </th>
+
+                                        <th
+                                            class="
+                                                px-6 py-4
+                                                text-right
+                                                text-[10px]
+                                                font-semibold
+                                                tracking-[0.15em]
+                                                uppercase
+                                                text-[#8A999E]
+                                            "
+                                        >
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="product-list">
+
+                                    <!--
+                                        script.js will eventually
+                                        generate product rows here.
+                                    -->
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <!-- Empty state -->
+                        <div
+                            id="empty-state"
+                            class="
+                                flex
+                                flex-col
+                                items-center
+                                justify-center
+                                text-center
+                                px-6 py-20
+                            "
+                        >
+                            <div
+                                class="
+                                    w-14 h-14
+                                    mb-5
+                                    flex items-center justify-center
+                                    rounded-2xl
+                                    bg-[#EAF7F5]
+                                    text-[#087D9D]
+                                    text-xl
+                                "
+                            >
+                                ◆
+                            </div>
+
+                            <h3 class="font-semibold text-[#102A33]">
+                                Your catalog is ready
+                            </h3>
+
+                            <p
+                                class="
+                                    max-w-[360px]
+                                    mt-2
+                                    text-sm
+                                    leading-6
+                                    text-[#819196]
+                                "
+                            >
+                                Add your first product to begin building the
+                                Zenith inventory catalog.
+                            </p>
+
+                            <button
+                                id="empty-add-product-btn"
+                                class="
+                                    mt-6
+                                    text-sm
+                                    font-semibold
+                                    text-[#087D9D]
+                                    hover:text-[#08A98B]
+                                    transition-colors
+                                "
+                            >
+                                Add a product →
+                            </button>
+                        </div>
+
+
+                        <!-- Pagination -->
+                        <div
+                            id="pagination"
+                            class="
+                                hidden
+                                items-center
+                                justify-between
+                                px-6 py-4
+                                border-t border-[#E7EEEE]
+                            "
+                        >
+                            <p
+                                id="pagination-summary"
+                                class="text-xs text-[#819196]"
+                            >
+                                Showing 0 products
+                            </p>
+
+                            <div class="flex items-center gap-2">
+
+                                <button
+                                    id="previous-page"
+                                    class="
+                                        px-3 py-2
+                                        rounded-lg
+                                        border border-[#DDE7E8]
+                                        text-xs
+                                        font-semibold
+                                        text-[#64777D]
+                                        hover:border-[#087D9D]
+                                        transition-colors
+                                    "
+                                >
+                                    Previous
+                                </button>
+
+                                <span
+                                    id="current-page"
+                                    class="
+                                        min-w-9 h-9
+                                        inline-flex
+                                        items-center
+                                        justify-center
+                                        rounded-lg
+                                        bg-[#031C2B]
+                                        text-white
+                                        text-xs
+                                        font-semibold
+                                    "
+                                >
+                                    1
+                                </span>
+
+                                <button
+                                    id="next-page"
+                                    class="
+                                        px-3 py-2
+                                        rounded-lg
+                                        border border-[#DDE7E8]
+                                        text-xs
+                                        font-semibold
+                                        text-[#64777D]
+                                        hover:border-[#087D9D]
+                                        transition-colors
+                                    "
+                                >
+                                    Next
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+
+    <!-- =========================
+         DRAWER OVERLAY
+    ========================== -->
+    <div
+        id="drawer-overlay"
+        class="
+            fixed inset-0
+            z-50
+            bg-[#031C2B]/30
+            backdrop-blur-[2px]
+            opacity-0
+            pointer-events-none
+            transition-opacity duration-300
+        "
+    ></div>
+
+
+    <!-- =========================
+         ADD / EDIT PRODUCT DRAWER
+    ========================== -->
+    <aside
+        id="product-drawer"
+        class="
+            fixed
+            top-0 right-0
+            z-[60]
+            h-screen
+            w-full sm:w-[520px]
+            bg-white
+            shadow-[-20px_0_60px_rgba(3,28,43,0.12)]
+            translate-x-full
+            transition-transform
+            duration-300
+            ease-out
+        "
+    >
+        <div class="h-full flex flex-col">
+
+            <!-- Drawer heading -->
+            <div
+                class="
+                    flex items-start
+                    justify-between
+                    px-7 py-6
+                    border-b border-[#E7EEEE]
+                "
+            >
+                <div>
+
+                    <p
+                        class="
+                            text-[10px]
+                            font-semibold
+                            tracking-[0.18em]
+                            uppercase
+                            text-[#087D9D]
+                        "
+                    >
+                        Catalog
+                    </p>
+
+                    <h2
+                        id="drawer-title"
+                        class="
+                            mt-2
+                            text-2xl
+                            font-semibold
+                            tracking-[-0.02em]
+                            text-[#102A33]
+                        "
+                    >
+                        New product
+                    </h2>
+
+                    <p class="mt-1 text-sm text-[#819196]">
+                        Add a product to the Zenith catalog.
+                    </p>
+
+                </div>
+
+                <button
+                    id="close-drawer-btn"
                     class="
-                        h-10
-                        bg-white
-                        flex-1
-                        px-3
-                        border
-                        border-[#06354A]
-                        rounded-lg
-                        text-[#031c2b]
+                        w-10 h-10
+                        rounded-full
+                        text-[#819196]
+                        hover:bg-[#F3F6F6]
+                        hover:text-[#102A33]
+                        transition-colors
                     "
-                />
-                <select 
-                    class="h-10 
-                    px-3 border 
-                    border-[#06354A] 
-                    rounded-lg"
+                    aria-label="Close"
                 >
-                    <option>Category</option>
-                </select>
+                    ×
+                </button>
 
-                <select 
-                    class="h-10 
-                    px-3 
-                    border 
-                    border-[#06354A] 
-                    rounded-lg"
+            </div>
+
+
+            <!-- Form -->
+            <form
+                id="product-form"
+                class="
+                    flex-1
+                    overflow-y-auto
+                    px-7 py-7
+                "
+            >
+
+                <div class="space-y-6">
+
+                    <div>
+
+                        <label
+                            for="product-name"
+                            class="form-label"
+                        >
+                            Product name
+                        </label>
+
+                        <input
+                            id="product-name"
+                            name="name"
+                            type="text"
+                            required
+                            class="form-input"
+                            placeholder="e.g. Zenith Wireless Keyboard"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label
+                            for="product-description"
+                            class="form-label"
+                        >
+                            Description
+                        </label>
+
+                        <textarea
+                            id="product-description"
+                            name="description"
+                            required
+                            rows="4"
+                            class="form-input"
+                            placeholder="Describe the product..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="grid sm:grid-cols-2 gap-5">
+
+                        <div>
+                            <label
+                                for="product-category"
+                                class="form-label"
+                            >
+                                Category
+                            </label>
+
+                            <input
+                                id="product-category"
+                                name="category"
+                                type="text"
+                                required
+                                class="form-input"
+                                placeholder="Electronics"
+                            >
+                        </div>
+
+
+                        <div>
+                            <label
+                                for="product-price"
+                                class="form-label"
+                            >
+                                Price
+                            </label>
+
+                            <div class="relative">
+
+                                <span
+                                    class="
+                                        absolute
+                                        left-4
+                                        top-1/2
+                                        -translate-y-1/2
+                                        text-[#819196]
+                                    "
+                                >
+                                    $
+                                </span>
+
+                                <input
+                                    id="product-price"
+                                    name="price"
+                                    type="number"
+                                    min="0.01"
+                                    step="0.01"
+                                    required
+                                    class="form-input pl-8"
+                                    placeholder="0.00"
+                                >
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <label
+                            for="product-tags"
+                            class="form-label"
+                        >
+                            Tags
+                        </label>
+
+                        <input
+                            id="product-tags"
+                            name="tags"
+                            type="text"
+                            class="form-input"
+                            placeholder="wireless, keyboard, computer"
+                        >
+
+                        <p class="mt-2 text-xs text-[#94A3A7]">
+                            Separate tags with commas.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        class="
+                            flex
+                            items-center
+                            justify-between
+                            p-4
+                            rounded-xl
+                            bg-[#F7FAFA]
+                            border border-[#E7EEEE]
+                        "
+                    >
+                        <div>
+                            <p class="text-sm font-semibold text-[#102A33]">
+                                Product availability
+                            </p>
+
+                            <p class="mt-1 text-xs text-[#819196]">
+                                Make this product available in the catalog.
+                            </p>
+                        </div>
+
+                        <label class="relative inline-flex cursor-pointer">
+
+                            <input
+                                id="product-stock"
+                                name="inStock"
+                                type="checkbox"
+                                checked
+                                class="peer sr-only"
+                            >
+
+                            <div
+                                class="
+                                    w-11 h-6
+                                    rounded-full
+                                    bg-[#CDD7D9]
+                                    peer-checked:bg-[#08C7A1]
+                                    transition-colors
+                                    after:content-['']
+                                    after:absolute
+                                    after:top-[2px]
+                                    after:left-[2px]
+                                    after:w-5
+                                    after:h-5
+                                    after:rounded-full
+                                    after:bg-white
+                                    after:shadow-sm
+                                    after:transition-transform
+                                    peer-checked:after:translate-x-5
+                                "
+                            ></div>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            <!-- Drawer actions -->
+            <div
+                class="
+                    flex
+                    justify-end
+                    gap-3
+                    px-7 py-5
+                    border-t border-[#E7EEEE]
+                    bg-white
+                "
+            >
+                <button
+                    id="cancel-product-btn"
+                    type="button"
+                    class="
+                        px-5 py-2.5
+                        rounded-xl
+                        border border-[#DDE7E8]
+                        text-sm
+                        font-semibold
+                        text-[#64777D]
+                        hover:bg-[#F7FAFA]
+                        transition-colors
+                    "
                 >
-                    <option>Sort By</option>
-                </select>
-            </section>
-        </section>
-        <section class="products">
+                    Cancel
+                </button>
 
-        </section>
-    </main>
+                <button
+                    id="save-product-btn"
+                    type="submit"
+                    form="product-form"
+                    class="
+                        px-5 py-2.5
+                        rounded-xl
+                        bg-[#087D9D]
+                        text-white
+                        text-sm
+                        font-semibold
+                        shadow-[0_8px_20px_rgba(8,125,157,0.16)]
+                        hover:bg-[#076D89]
+                        transition-all
+                    "
+                >
+                    Create product
+                </button>
+            </div>
+
+        </div>
+    </aside>
+
 </body>
 </html>
