@@ -66,6 +66,16 @@ select {
     color: #A1AEB1;
 }
 
+#product-price {
+    padding-left: 2.75rem;
+}
+
+.product-category-price {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
 .form-input:focus {
     background-color: #FFFFFF;
     border-color: var(--color-zenith-blue);
